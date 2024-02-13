@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Navbar from './ReactComponents/Navbar';
+import Textarea from './ReactComponents/Textarea';
+import React, { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [mode, setMode] = useState('light') //setting page theme to Light mode by default
 
+  const themeHandler = () => {
+    const body = document.querySelector('body')
+
+    if (mode === 'light') {
+      setMode('dark')
+      console.log(mode + ' mode enabled')
+      body.style.background = '#232D3F'
+    }
+    else {
+      setMode('light')
+      console.log(mode + ' mode enabled')
+      document.body.style.background = ''
+    }
+  }
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <section className="section-1">
+        <Navbar title='TextUtils' themeHandler={themeHandler} mode={mode} />
+      </section>
+      <section className="section-2">
+        <Textarea mode={mode} />
+      </section>
+    </>)
 }
 
-export default App
+export default App;

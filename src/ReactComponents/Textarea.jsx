@@ -1,80 +1,28 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-function Textarea() {
-    const [text, setText] = useState('');
-
-    // Function to convert text to UpperCase
-    const uppercaseHandler = () => {
-        let newText = text.toUpperCase();
-        setText(newText);
-    };
-
-    // Function to convert text to LowerCase
-    const lowercaseHandler = () => {
-        let newText = text.toLowerCase();
-        setText(newText);
-    };
-
-    // Function to Clear text
-    const clearHandler = () => {
-        setText('');
-    };
-
-    // Default function for Textarea tag to make any change inside
-    const changeHandler = (event) => {
-        setText(event.target.value);
-    };
-
-    // Function to Copy text
-    const copyHandler = () => {
-        // Select the text inside the text field
-        navigator.clipboard.writeText(text);
-
-        // Alert the copied text
-        alert("Text copied");
-    };
+function Textarea(props) {
 
     return (
         <>
-            <div className="p-2" id="textPlayGround">
-                <h4 className="form-label my-3 fw-bold">Analyse text below</h4>
-                <textarea
-                    className="form-control"
-                    placeholder="Enter text here..."
-                    id="exampleFormControlTextarea1"
-                    rows="10"
-                    value={text}
-                    onChange={changeHandler}
-                ></textarea>
-                <div className="details container mt-3 fw-bold d-flex gap-5">
-                    <p className="words">
-                        Words :{" "}
-                        <span className="count text-success">
-                            {text === "" ? 0 : text.split(" ").length}
-                        </span>
-                    </p>
-                    <p className="letters">
-                        Letters :{" "}
-                        <span className="count text-success">{text.length}</span>
-                    </p>
+            <div className="container align-items-center m-auto">
+                <h3 className="fw-bold">Analyse your Text below</h3>
+                <div className="my-3">
+                    <textarea className="form-control rounded" id="myBox" rows="10"></textarea>
+                </div>
+                <div className="d-flex justify-content-evenly align-items-center w-100">
+                    <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`}>Uppercase</button>
+                    <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`}>Lowercase</button>
+                    <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`}>Uppercase</button>
+                    <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`}>Copy Text</button>
+                    <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`}>Clear Text</button>
                 </div>
             </div>
-            <div className="buttons d-flex gap-5 flex-wrap col-md-12">
-                <button className="btn btn-dark" onClick={uppercaseHandler}>
-                    Transform to Uppercase
-                </button>
-                <button className="btn btn-dark" onClick={lowercaseHandler}>
-                    Transform to Lowercase
-                </button>
-                <button className="btn btn-dark" onClick={clearHandler}>
-                    Clear Text
-                </button>
-                <button className="btn btn-dark" onClick={copyHandler}>
-                    Copy Text
-                </button>
-            </div>
+
+
+
         </>
-    );
+    )
+
 }
 
 export default Textarea;
