@@ -3,9 +3,9 @@ import React, {useState} from "react";
 function Navbar (props){
     return (
 <nav className={`navbar navbar-expand-lg bg-${props.mode === 'dark' ? 'dark': 'success'} px-5`}>
-  <div className="container-fluid mx-5">
+  <div className="container-fluid justify-content-between">
     <a className="navbar-brand fw-bold text-light" href="#">{props.title}</a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button className="navbar-toggler" style={{background: '#198754'}} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -14,10 +14,7 @@ function Navbar (props){
           <a className="nav-link active text-light" aria-current="page" href="#">Home</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-light" href="#">Link</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link text-light disabled" aria-disabled="true">Disabled</a>
+          <a className="nav-link text-light" href="#">About</a>
         </li>
       </ul>
       <div className="d-flex justify-content-evenly align-items-center text-light gap-3">
@@ -44,6 +41,14 @@ function Navbar (props){
   </div>
 </nav>
     )
+}
+
+// Navbar.propTypes = {
+//   title : PropTypes.string.isRequired
+// }
+
+Navbar.defaultProps = {
+  title : 'Title here'
 }
 
 export default Navbar;
