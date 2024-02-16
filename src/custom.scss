@@ -1,5 +1,27 @@
+.day{
+    fill: #ffc107;
+}
+.night{
+    fill: #20c997;
+}
+
 .alert{
     $zindex-sticky: 1020; 
+}
+
+.theme{
+    width: 1rem;
+    height: 1rem;
+}
+
+.theme-red{
+    background: #240404;
+}
+.theme-blue{
+    background: #042043;
+}
+.theme-green{
+    background: #1B4242;
 }
 
 @import '/node_modules/bootstrap/scss/bootstrap.scss';
