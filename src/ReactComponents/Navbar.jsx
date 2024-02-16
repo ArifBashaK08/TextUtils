@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function Navbar(props) {
 
@@ -16,17 +16,20 @@ function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-lg bg-${props.mode === 'dark' ? 'dark' : 'success'} px-5`}>
       <div className="container-fluid justify-content-between">
-        <Link className="navbar-brand fw-bold text-light" to="/home">{props.title}</Link>
+        {/* <Link className="navbar-brand fw-bold text-light" to="/home">{props.title}</Link> */}
+        <a className="navbar-brand fw-bold text-light" href="#">{props.title}</a>
         <button className="navbar-toggler" style={{ background: '#198754' }} type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-3 d-flex">
             <li className="nav-item">
-              <Link className="nav-Link active text-light text-decoration-none fw-medium" aria-current="page" to="/home">Home</Link>
+              <a className="nav-Link active text-light text-decoration-none fw-medium" aria-current="page" href="#">Home</a>
+              {/* <Link className="nav-Link active text-light text-decoration-none fw-medium" aria-current="page" to="/home">Home</Link> */}
             </li>
             <li className="nav-item">
-              <Link className="nav-Link text-light text-decoration-none fw-medium" to="/about">About</Link>
+              <a className="nav-Link text-light text-decoration-none fw-medium" href="#">About</a>
+              {/* <Link className="nav-Link text-light text-decoration-none fw-medium" to="/about">About</Link> */}
             </li>
           </ul>
           <div className="container d-flex flex-row-reverse text-end">
