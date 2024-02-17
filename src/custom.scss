@@ -4,6 +4,11 @@
 .night{
     fill: #20c997;
 }
+.red, .blue, .green{
+    box-sizing: border-box;
+    height: 1.5rem;
+    width: 1.5rem;
+}
 
 .alert{
     $zindex-sticky: 1020; 
