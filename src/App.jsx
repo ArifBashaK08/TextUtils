@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './ReactComponents/Navbar';
 import Textarea from './ReactComponents/Textarea';
 import Alerts from './ReactComponents/Alerts';
-// import About from './ReactComponents/About';
+import About from './ReactComponents/About';
 
 function App() {
   const [mode, setMode] = useState('light'); // setting page theme to Light mode by default
@@ -35,20 +35,17 @@ function App() {
 
   return (
     <>
-    {/* <BrowserRouter> */}
+    <BrowserRouter>
       <section className="container-fluid m-0 p-0">
         <Navbar title='TextUtils' themeHandler={themeHandler} mode={mode} />
+      </section>
         <Alerts alert={alert} />
-      </section>
-      <section className="section2 container-fluid">
-      <Textarea mode={mode} showAlert={showAlert} />
-      </section>
-      {/* <Routes> */}
-        {/* <Route exact path="/home" element={<Textarea mode={mode} showAlert={showAlert} />} /> */}
-        {/* <Route exact path="/about" element={<About mode={mode} />} /> */}
+      <Routes>
+        <Route path="/" element={<Textarea mode={mode} showAlert={showAlert} />} />
+        <Route exact path="/about" element={<About mode={mode} />} />
         {/* Define other routes as needed */}
-      {/* </Routes> */}
-    {/* </BrowserRouter> */}
+      </Routes>
+    </BrowserRouter>
     </>
   );
 }

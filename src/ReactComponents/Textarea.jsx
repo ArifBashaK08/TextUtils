@@ -23,6 +23,13 @@ function Textarea(props) {
         let result = text.toUpperCase()
         setText(result)
     }
+
+//Function to remove extra spaces
+
+const SpaceRemoverhandler = () => {
+    let result = text.split(/\s+/).map(str => str.trim()).join(" ");
+    setText(result)
+}
     //Function to copy text
     const CopyHandler = () => {
         let copyText = document.getElementById('myBox')
@@ -36,7 +43,7 @@ function Textarea(props) {
         setText(result)
     }
     //Function to get word count
-    let wordCount = text.split(' ').length;
+    // let wordCount = text.split(' ').length;
     let letterCount = text.length;
 
 
@@ -44,18 +51,18 @@ function Textarea(props) {
         <>
             <div className="container align-items-center mt-5">
                 <h3 className={`fw-bold ${props.mode === 'dark' ? 'text-light' : ''}`}>Analyse your Text below</h3>
-                <div className={`my-3 ${props.mode === 'dark' ? 'bg-secondary text-light' : ''}`}>
-                    <textarea className={`form-control rounded ${props.mode === 'dark' ? 'bg-secondary text-light' : ''}`} onChange={changeHandler} id="myBox" value={text} rows="10"></textarea>
+                <div className={`my-3 ${props.mode === 'dark' ? 'bg-transparent text-light' : ''}`}>
+                    <textarea className={`form-control rounded ${props.mode === 'dark' ? 'bg-transparent text-light' : ''}`} onChange={changeHandler} id="myBox" value={text} rows="10"></textarea>
                 </div>
                 <div className="my-3 d-flex gap-5">
-                    <strong className={`my-3 ${props.mode === 'dark' ? 'text-light' : ''}`}>Words : <span className="text-success">{text === ''? wordCount-1 : text.split(' ') ? wordCount-1 : wordCount}</span></strong>
+                    <strong className={`my-3 ${props.mode === 'dark' ? 'text-light' : ''}`}>Words : <span className="text-success">{text.split(/\s+/).filter((e) => e.length!==0).length}</span></strong>
                     <strong className={`my-3 ${props.mode === 'dark' ? 'text-light' : ''}`}>Letters : <span className="text-success">{letterCount}</span></strong>
                 </div>
                 <div className="d-flex flex-wrap justify-content-start gap-5 align-items-center">
                     <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`} onClick={uppercaseHandler}>Uppercase</button>
                     <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`} onClick={lowercaseHandler}>Lowercase</button>
-                    <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`}>Uppercase</button>
                     <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`} onClick={CopyHandler}>Copy Text</button>
+                    <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`}onClick={SpaceRemoverhandler}>Remove spaces</button>
                     <button type="button" className={`btn ${props.mode === 'dark' ? 'btn-success' : 'btn-dark'}`} onClick={clearHandler}>Clear Text</button>
                 </div>
             </div>
